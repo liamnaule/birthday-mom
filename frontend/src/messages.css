@@ -508,3 +508,21 @@
     font-size: 15px;
   }
 }
+
+/* ========================================
+   FIX: ENSURE WISHES SECTION CAN EXPAND
+   ======================================== */
+
+.msg-wishes-section {
+  max-height: none !important;
+  height: auto !important;
+}
+
+.msg-list {
+  max-height: none !important;
+  flex: 1;
+}
+
+.msg-card {
+  flex-shrink: 0;
+}
