@@ -260,6 +260,10 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.02);
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .msg-card::before {
@@ -287,9 +291,9 @@
 .msg-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 12px;
+  align-items: flex-start;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .msg-author {
@@ -299,11 +303,9 @@
   color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: -0.01em;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  flex: 1;
+  min-width: 150px;
 }
-
 
 .msg-time {
   font-size: 12px;
@@ -311,16 +313,19 @@
   font-weight: 400;
   white-space: nowrap;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  flex-shrink: 0;
 }
 
 .msg-text {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.7;
   color: #cccccc;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: -0.01em;
-  padding-top: 8px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 /* Loading and empty states */
