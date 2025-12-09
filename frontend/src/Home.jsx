@@ -29,7 +29,7 @@ export default function Home() {
       <div className="video-overlay"></div>
 
       <div className="text-overlay">
-        <h1 className="main-title">Happy Birthday Mom</h1>
+        <h1 className="main-title">Happy Birthday Mum</h1>
         <h3 className="sub-title">You are the light of our lives</h3>
       </div>
     </div>

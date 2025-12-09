@@ -4,28 +4,49 @@
   padding: 100px 24px 80px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
+  background: transparent;
 }
 
 .msg-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  padding: 40px 20px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+  border: 1px solid #333333;
 }
 
 .msg-title {
   font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 300;
   letter-spacing: -0.03em;
-  color: #1a1a1a;
-  margin: 0 0 12px 0;
+  color: #ffffff;
+  margin: 0 0 16px 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 10px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.msg-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #ffffff;
+  opacity: 0.6;
 }
 
 .msg-description {
-  font-size: 16px;
-  color: #6b6b6b;
+  font-size: 17px;
+  color: #cccccc;
   font-weight: 400;
   margin: 0;
   letter-spacing: -0.01em;
+  line-height: 1.6;
 }
 
 .msg-content-wrapper {
@@ -42,26 +63,60 @@
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
-  color: #1a1a1a;
-  margin: 0 0 24px 0;
-  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.02em;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
 }
 
 /* Form */
 .msg-form {
-  background: #ffffff;
-  padding: 32px;
-  border-radius: 12px;
-  border: 1px solid #e8e8e8;
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #333333;
   width: 100%;
-  transition: border-color 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.msg-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #ffffff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .msg-form:hover {
-  border-color: #d0d0d0;
+  border-color: #555555;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.msg-form:hover::before {
+  transform: scaleX(1);
 }
 
 .form-group {
@@ -72,7 +127,7 @@
   display: block;
   font-size: 13px;
   font-weight: 500;
-  color: #4a4a4a;
+  color: #cccccc;
   margin-bottom: 8px;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -82,28 +137,36 @@
 .msg-input,
 .msg-textarea {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 2px solid #333333;
   font-size: 15px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   box-sizing: border-box;
-  background: #ffffff;
-  color: #1a1a1a;
+  background: #0a0a0a;
+  color: #ffffff;
   letter-spacing: -0.01em;
+}
+
+.msg-input:hover,
+.msg-textarea:hover {
+  background: #111111;
+  border-color: #555555;
 }
 
 .msg-input::placeholder,
 .msg-textarea::placeholder {
-  color: #9b9b9b;
+  color: #666666;
 }
 
 .msg-input:focus,
 .msg-textarea:focus {
   outline: none;
-  border-color: #1a1a1a;
-  background: #ffffff;
+  border-color: #ffffff;
+  background: #111111;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
 .msg-textarea {
@@ -115,48 +178,110 @@
 /* Button */
 .msg-btn {
   width: 100%;
-  padding: 14px;
-  background: #1a1a1a;
-  color: white;
+  padding: 16px;
+  background: #ffffff;
+  color: #000000;
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 12px;
+  font-size: 15px;
   font-weight: 500;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  margin-top: 8px;
+  margin-top: 12px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.msg-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+  transition: left 0.5s ease;
 }
 
 .msg-btn:hover {
-  background: #2d2d2d;
+  background: #f0f0f0;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.msg-btn:hover::before {
+  left: 100%;
 }
 
 .msg-btn:active {
-  background: #0f0f0f;
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
 /* Messages list */
 .msg-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.msg-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.msg-list::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 10px;
+}
+
+.msg-list::-webkit-scrollbar-thumb {
+  background: #555555;
+  border-radius: 10px;
+}
+
+.msg-list::-webkit-scrollbar-thumb:hover {
+  background: #777777;
 }
 
 .msg-card {
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid #e8e8e8;
-  transition: all 0.2s ease;
+  background: #1a1a1a;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid #333333;
+  transition: all 0.3s ease;
   animation: fadeInUp 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.02);
+}
+
+.msg-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #ffffff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .msg-card:hover {
-  border-color: #d0d0d0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-color: #555555;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+}
+
+.msg-card:hover::before {
+  opacity: 1;
 }
 
 .msg-card-header {
@@ -169,16 +294,20 @@
 
 .msg-author {
   margin: 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
 
 .msg-time {
   font-size: 12px;
-  color: #9b9b9b;
+  color: #999999;
   font-weight: 400;
   white-space: nowrap;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -186,11 +315,12 @@
 
 .msg-text {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #4a4a4a;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #cccccc;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: -0.01em;
+  padding-top: 8px;
 }
 
 /* Loading and empty states */
@@ -198,13 +328,51 @@
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: #9b9b9b;
+  color: #999999;
   font-size: 15px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .empty-state p {
   margin: 0;
+}
+
+/* Error and success messages */
+.msg-error {
+  background: #2a1a1a;
+  color: #ff6666;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  border: 1px solid #ff4444;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 8px rgba(255, 68, 68, 0.2);
+  animation: slideIn 0.3s ease;
+}
+
+.msg-success {
+  background: #1a2a1a;
+  color: #66ff66;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  border: 1px solid #44ff44;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 8px rgba(68, 255, 68, 0.2);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Animation */
@@ -241,11 +409,20 @@
   }
 
   .msg-header {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    padding: 32px 16px;
+  }
+
+  .msg-title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+
+  .msg-description {
+    font-size: 14px;
   }
 
   .msg-form {
-    padding: 24px;
+    padding: 28px;
   }
 
   .msg-card {
@@ -256,5 +433,74 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .msg-container {
+    padding: 90px 16px 40px;
+  }
+
+  .msg-header {
+    margin-bottom: 40px;
+    padding: 28px 12px;
+  }
+
+  .msg-title {
+    font-size: clamp(1.75rem, 10vw, 2rem);
+    margin-bottom: 8px;
+  }
+
+  .msg-description {
+    font-size: 13px;
+    padding: 0 8px;
+  }
+
+  .msg-content-wrapper {
+    gap: 40px;
+  }
+
+  .msg-form {
+    padding: 24px;
+  }
+
+  .msg-card {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    font-size: 12px;
+  }
+
+  .msg-input,
+  .msg-textarea {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  .msg-btn {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .msg-author {
+    font-size: 16px;
+  }
+
+  .msg-time {
+    font-size: 11px;
+  }
+
+  .msg-text {
+    font-size: 15px;
   }
 }
