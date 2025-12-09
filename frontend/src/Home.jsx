@@ -1,37 +1,20 @@
-import { useRef, useEffect } from "react";
 import "./home.css";
 
 export default function Home() {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.error("Video play error:", err);
-      });
-    }
-  }, []);
+  const videoId = import.meta.env.VITE_BACKGROUND_VIDEO_ID || "SZQIthwdb6E";
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&playsinline=1&rel=0`;
 
   return (
     <div className="home-container">
-      <video 
-        ref={videoRef}
-        autoPlay 
-        muted 
-        loop 
-        playsInline 
-        className="background-video"
-      >
-        <source
-          src={
-            import.meta.env.VITE_BACKGROUND_VIDEO_URL ||
-            "https://github.com/liamnaule/birthday-mom/releases/download/video/carole.slideshow.mp4" ||
-            "/carole slideshow.mp4"
-          }
-          type="video/mp4"
+      <div className="background-video">
+        <iframe
+          src={embedUrl}
+          title="Background video"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
         />
-        Your browser does not support the video tag.
-      </video>
+      </div>
 
       <div className="video-overlay"></div>
 
