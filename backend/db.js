@@ -6,10 +6,12 @@ const fs = require('fs');
 // Ensure database directory exists
 const dbPath = path.join(__dirname, 'messages.db');
 
+const enableVerbose = process.env.LOG_SQL === 'true';
+
 // Create database connection with persistence settings
 // The database file will persist permanently in the backend directory
 const db = new Database(dbPath, {
-  verbose: console.log // Optional: log SQL queries in development
+  verbose: enableVerbose ? console.log : null
 });
 
 // Enable WAL mode for better concurrency and data safety

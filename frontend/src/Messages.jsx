@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { API } from './api';
 import './messages.css';
 
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000').replace(/\/$/, '');
+
 export default function Messages() {
   const [messages, setMessages] = useState([]);
   const [name, setName] = useState('');
@@ -19,7 +21,7 @@ export default function Messages() {
     } catch (err) {
       console.error('Load messages error:', err);
       if (err.code === 'ECONNREFUSED' || err.message?.includes('Network Error')) {
-        setError('Cannot connect to server. Please make sure the backend is running on port 5000.');
+        setError(`Cannot reach backend at ${API_BASE}. Please ensure it is running.`);
       } else {
         setError('Failed to load messages. Please try again later.');
       }
@@ -55,7 +57,7 @@ export default function Messages() {
     } catch (err) {
       console.error('Send message error:', err);
       if (err.code === 'ECONNREFUSED' || err.message?.includes('Network Error')) {
-        setError('Cannot connect to server. Please make sure the backend is running on port 5000.');
+        setError(`Cannot reach backend at ${API_BASE}. Please ensure it is running.`);
       } else {
         setError(err.response?.data?.error || err.message || 'Failed to send message. Please try again.');
       }
