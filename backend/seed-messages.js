@@ -44,7 +44,8 @@ const messages = [
   { name: 'Tracy Gitahi', message: 'Happy birthday mama Liam❤️may you continue to age like fine wine 😍😍And stay blessed💖' },
   { name: 'Ian Musk', message: 'Happy birthday to you mama Naule. Liam is blessed to have a mum as strong, caring, and inspiring as you. May this new year bring you joy, peace, and everything you\'ve been praying for. Keep shining and keep being the incredible person you are. Enjoy your day fully' },
   { name: 'Shem', message: 'Happy Birthday Mama Liam!' },
-  { name: 'Faiza', message: 'Happy birthday mama Liam I wish you a happy birthday 🎉🎈 Sending you warm wishes and lots of love today. You raised an amazing son intelligent, kind, and hardworking and that speaks so highly of you May this new year bring you peace, laughter, and endless love💗' }
+  { name: 'Faiza', message: 'Happy birthday mama Liam I wish you a happy birthday 🎉🎈 Sending you warm wishes and lots of love today. You raised an amazing son intelligent, kind, and hardworking and that speaks so highly of you May this new year bring you peace, laughter, and endless love💗' },
+  { name: 'Jedi', message: 'Happy Birthday Mama Liam 🥳\nPraying that God continues to bless you  \nand your family ❤️' }
 ];
 
 try {
