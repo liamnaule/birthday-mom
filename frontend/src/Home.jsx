@@ -22,7 +22,14 @@ export default function Home() {
         playsInline 
         className="background-video"
       >
-        <source src="/carole slideshow.mp4" type="video/mp4" />
+        <source
+          src={
+            import.meta.env.VITE_BACKGROUND_VIDEO_URL ||
+            "https://github.com/liamnaule/birthday-mom/releases/download/video/carole.slideshow.mp4" ||
+            "/carole slideshow.mp4"
+          }
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
 
