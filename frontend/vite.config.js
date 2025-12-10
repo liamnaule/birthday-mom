@@ -6,13 +6,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/',
   build: {
-    rollupOptions: {
-      output: {
-        entryFileNames: 'index-[hash].js',
-        chunkFileNames: '[name]-[hash].js',
-        assetFileNames: '[name]-[hash][extname]',
-      }
-    },
     minify: 'esbuild',
     sourcemap: false,
   },
