@@ -12,7 +12,7 @@ initDatabase();
 
 
 const allowedOrigins = process.env.CORS_ORIGINS
-  ? process.env.CORS_ORIGINS.split(',').map((o) => o.trim()).filter(Boolean)
+  ? process.env.CORS_ORIGINS.split(',').map((o) => o.trim().replace(/\/$/, '')).filter(Boolean)
   : [];
 
 const app = express();
@@ -23,10 +23,24 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
+
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.length === 0) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+    // Allow no origin (same-origin requests)
+    if (!origin) return callback(null, true);
+    
+    // Allow if no restrictions set
+    if (allowedOrigins.length === 0) return callback(null, true);
+    
+    // Remove trailing slash from origin for comparison
+    const normalizedOrigin = origin.replace(/\/$/, '');
+    
+    // Check if origin is in allowed list
+    if (allowedOrigins.includes(normalizedOrigin) || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    console.log(`CORS blocked: ${origin} not in [${allowedOrigins.join(', ')}]`);
     return callback(new Error('Not allowed by CORS'));
   },
   credentials: true
