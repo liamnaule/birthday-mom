@@ -1,4 +1,5 @@
-// backend/seed-messages.js
+// backend/init-db.js
+require('dotenv').config();
 const db = require('./db');
 
 const messages = [
@@ -50,24 +51,26 @@ const messages = [
   { name: 'Janto', message: 'Happy birthday my sister.\nI hope you had a blast!' }
 ];
 
-try {
-  // Check if messages already exist to avoid duplicates
-  const count = db.prepare('SELECT COUNT(*) as count FROM messages').get();
-  
-  if (count.count > 0) {
-    console.log(`✅ Database already has ${count.count} messages. Skipping seed.`);
-    process.exit(0);
+// Initialize database with messages if empty
+function initDatabase() {
+  try {
+    const count = db.prepare('SELECT COUNT(*) as count FROM messages').get();
+    
+    if (count.count === 0) {
+      console.log('🔄 Database is empty. Seeding with messages...');
+      const stmt = db.prepare('INSERT INTO messages (name, message) VALUES (?, ?)');
+      
+      messages.forEach((msg) => {
+        stmt.run(msg.name, msg.message);
+      });
+      
+      console.log(`✅ Database seeded with ${messages.length} messages!`);
+    } else {
+      console.log(`✅ Database already has ${count.count} messages.`);
+    }
+  } catch (err) {
+    console.error('❌ Error initializing database:', err);
   }
-
-  const stmt = db.prepare('INSERT INTO messages (name, message) VALUES (?, ?)');
-  
-  messages.forEach((msg) => {
-    stmt.run(msg.name, msg.message);
-  });
-  
-  console.log(`✅ Successfully inserted ${messages.length} messages!`);
-  process.exit(0);
-} catch (err) {
-  console.error('❌ Error inserting messages:', err);
-  process.exit(1);
 }
+
+module.exports = { initDatabase };
